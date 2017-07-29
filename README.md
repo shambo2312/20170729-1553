@@ -9,11 +9,10 @@
 Instructions to evaluate INADEV’s CI/ CD pipeline
   <br>
   <br>
-  <br>
 </h2>
   <br>
   <br>
-  <br>
+  
 ## Workflow Description
 
 <br>
