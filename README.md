@@ -1,5 +1,5 @@
 ###### DHS-HSSCCG-17-I-00018
-<h2 align="center">
+<h1 align="center">
   <br>
   <a href="http://www.inadev.com/"><img src="http://inadev.com/sites/all/themes/inadev_2016/img/Inadev_Logo.png" alt="INADEV" width="200"></a>
   <br>
@@ -9,7 +9,7 @@
 Instructions to evaluate INADEV’s CI/ CD pipeline
   <br>
   <br>
-</h2>
+</h1>
   <br>
   <br>
   
