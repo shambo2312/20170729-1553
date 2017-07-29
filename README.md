@@ -11,12 +11,14 @@ Instructions to evaluate INADEV’s CI/ CD pipeline
   <br>
   <br>
 </h2>
-
+  <br>
+  <br>
+  <br>
 ## Workflow Description
 
 <br>
 
-![ CI/CD Workflow Diagram](https://dl.dropboxusercontent.com/content_link/L4uYemFjDh2rC4P0TUJz4oD1HqlOOLbVOFkpjYoxHbUZktVUpaSfmJKMUmu9dT1P/file)
+![ CI/CD Workflow Diagram](http://54.235.108.125/RFI.png)
 
 <br>
 
