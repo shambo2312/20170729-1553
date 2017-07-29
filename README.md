@@ -13,11 +13,13 @@ Instructions to evaluate INADEV’s CI/ CD pipeline
 </h2>
 
 ### Workflow Description
-<br>
-
-![ CI/CD Workflow Diagram](https://lh3.googleusercontent.com/4Dm59G2R_-4FtO_v5M9ZU_0-fDkUcoBW6gj0JkHB6WPx0x3cPXRfUPU28sRhaxUwUCV8RBJqFdy6CNE=w1366-h659)
 
 <br>
+
+![ CI/CD Workflow Diagram](https://drive.google.com/file/d/0B2XAvWC1ycrfdzBETUZUSkRMSUE/view)
+
+<br>
+
 ### Evaluate Workflow
 
 In order to evaluate our automation code, it is required that you make the following changes to the various components:
@@ -82,7 +84,7 @@ When the CloudFormation template is imported into AWS CloudFormation, you will b
   </tr>
 </table>
 
-###### EC2 Instance Linux User and Password
+##### EC2 Instance Linux User and Password
 For this evaluation, we have put a static password within the CloudFormation template.   
 If needed, you can change the password for ubuntu user from within the CloudFormation template for each EC2 instance. You will have to change the password within the UserData key for EC2 instances by editing the following line where default password is *qFKWZRUFfk17BmD7BNSvx9O6* :
 
@@ -93,7 +95,7 @@ After successful deployment, go to the Outputs tab to find the private IP of the
 
 #### B. Jenkins Build Plan Projects
 
-###### Java Application Build Plan
+##### Java Application Build Plan
 
 The Application build plan automates the following tasks:
 * Pulls source code from git repository.
@@ -123,7 +125,7 @@ In the above code, please change the docker repository name from dockerhub’s i
 
 * Lastly, replace *inadevops* with your repository name, wherever applicable.
 
-###### Docker Image Deployment
+##### Docker Image Deployment
 
 The Docker image deployment plan automates the following tasks:
 * Pulls source code from git repository for Chef cookbook for Docker.
@@ -138,7 +140,7 @@ The Configuration changes required are as follows:
 
 *It is advisable not to change the password that is set against the variable serverpass. If you are required to change that, do make sure that the same password is set within the CloudFormation template.*
 
-###### Web Server Configuration Deployment
+##### Web Server Configuration Deployment
 
 The Web Server configuration deployment plan automates the following tasks:
 * Pulls source code from git repository for Chef cookbook for Web Server.
@@ -155,16 +157,16 @@ The Configuration changes required are as follows:
 
 To version control the Cookbooks and for auto deployment, these cookbooks must be uploaded into a git repository. URL and credentials of these repositories must be specified within the Jenkins deployment plans for Docker and Web Server configuration. It is required that each cookbook is uploaded to its own separate repository.
 
-###### Webserver Cookbook
+##### Webserver Cookbook
 
 Following tasks are performed by this cookbook:
 
-* On first run installs and configures Apache2 and its modules.
+* On first run, installs and configures Apache2 and its modules.
 * Next run onwards it updates the Apache2 configuration files.
 
 To evaluate our Chef cookbook for Web Server configuration, you will have to replace the value of the variable backendserverip with the IP address of the App Server within the file webserver/recipes/default.rb
 
-###### Docker Cookbook
+##### Docker Cookbook
 
 Following tasks are performed by this cookbook:
 
