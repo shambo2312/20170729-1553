@@ -12,19 +12,19 @@ Instructions to evaluate INADEV’s CI/ CD pipeline
   <br>
 </h2>
 
-### Workflow Description
+## Workflow Description
 
 <br>
 
-![ CI/CD Workflow Diagram](https://drive.google.com/file/d/0B2XAvWC1ycrfdzBETUZUSkRMSUE/view)
+![ CI/CD Workflow Diagram](https://dl.dropboxusercontent.com/content_link/L4uYemFjDh2rC4P0TUJz4oD1HqlOOLbVOFkpjYoxHbUZktVUpaSfmJKMUmu9dT1P/file)
 
 <br>
 
-### Evaluate Workflow
+## Evaluate Workflow
 
 In order to evaluate our automation code, it is required that you make the following changes to the various components:
 
-#### A. CloudFormation Template
+### A. CloudFormation Template
 
 We have designed a CloudFormation template to launch the whole "Hello World" Application infrastructure.   
 When the CloudFormation template is imported into AWS CloudFormation, you will be asked to provide the following details:
@@ -84,7 +84,7 @@ When the CloudFormation template is imported into AWS CloudFormation, you will b
   </tr>
 </table>
 
-##### EC2 Instance Linux User and Password
+#### EC2 Instance Linux User and Password
 For this evaluation, we have put a static password within the CloudFormation template.   
 If needed, you can change the password for ubuntu user from within the CloudFormation template for each EC2 instance. You will have to change the password within the UserData key for EC2 instances by editing the following line where default password is *qFKWZRUFfk17BmD7BNSvx9O6* :
 
@@ -93,9 +93,9 @@ If needed, you can change the password for ubuntu user from within the CloudForm
 It is also needed that you replace the S3 bucket URL in the EC2 UserData key which hosts the different Chef-client configuration and certificate files for your Chef server.    
 After successful deployment, go to the Outputs tab to find the private IP of the App servers and Web server along with the bastion host or jumpbox.
 
-#### B. Jenkins Build Plan Projects
+### B. Jenkins Build Plan Projects
 
-##### Java Application Build Plan
+#### Java Application Build Plan
 
 The Application build plan automates the following tasks:
 * Pulls source code from git repository.
@@ -125,7 +125,7 @@ In the above code, please change the docker repository name from dockerhub’s i
 
 * Lastly, replace *inadevops* with your repository name, wherever applicable.
 
-##### Docker Image Deployment
+#### Docker Image Deployment
 
 The Docker image deployment plan automates the following tasks:
 * Pulls source code from git repository for Chef cookbook for Docker.
@@ -140,7 +140,7 @@ The Configuration changes required are as follows:
 
 *It is advisable not to change the password that is set against the variable serverpass. If you are required to change that, do make sure that the same password is set within the CloudFormation template.*
 
-##### Web Server Configuration Deployment
+#### Web Server Configuration Deployment
 
 The Web Server configuration deployment plan automates the following tasks:
 * Pulls source code from git repository for Chef cookbook for Web Server.
@@ -153,11 +153,11 @@ The Configuration changes required are as follows:
 * To trigger builds on commit pushed to git repository, please configure webhooks for that repository where the Chef cookbook  uploaded, add the repository URL and add git credentials under the source code management section within Jenkins. By default, we have configured our job to pull the master branch.
 * In the shell script section you will have to replace the values of variables webserver1_ip and webserver2_ip with the private IP addresses of the Web Servers along with value for variable bastion_host_ip which also can be found under the Outputs tab of the CloudFormation console.
 
-#### C. Chef Cookbooks
+### C. Chef Cookbooks
 
 To version control the Cookbooks and for auto deployment, these cookbooks must be uploaded into a git repository. URL and credentials of these repositories must be specified within the Jenkins deployment plans for Docker and Web Server configuration. It is required that each cookbook is uploaded to its own separate repository.
 
-##### Webserver Cookbook
+#### Webserver Cookbook
 
 Following tasks are performed by this cookbook:
 
@@ -166,7 +166,7 @@ Following tasks are performed by this cookbook:
 
 To evaluate our Chef cookbook for Web Server configuration, you will have to replace the value of the variable backendserverip with the IP address of the App Server within the file webserver/recipes/default.rb
 
-##### Docker Cookbook
+#### Docker Cookbook
 
 Following tasks are performed by this cookbook:
 
@@ -178,7 +178,7 @@ Following changes are required to evaluate the cookbook:
 * Within the docker/recipes/default.rb file, please replace *“inadevops”* with your repository name and also do make sure that you have replaced our Docker Hub credentials with yours. Again, these changes are not necessary to evaluate this cookbook as you can use INADEV’s docker repository.
 * If you decide to make the above-mentioned changes and use your own docker repository, it is further required that you change the repository name within a file located at docker/templates/docker-status.erb which is a shell script template used to check docker container status.
 
-#### D. Java Application
+### D. Java Application
 
 This is a Spring Boot Application which is deployed on Tomcat.
 
